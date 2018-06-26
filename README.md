@@ -32,3 +32,18 @@ request(queryUrl, function(error, response, body) {
    console.log("Release Year: " + JSON.parse(body).Year);
   }
 });
+# Spotify Info
+var Spotify = require('node-spotify-api');
+ 
+var spotify = new Spotify({
+  id: 24969155ae5b4a2181b2e58ca56b7b42,
+  secret: 64ba250ac4884c21b86e61d27ebcb469
+});
+ 
+spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+ 
+console.log(data); 
+});
