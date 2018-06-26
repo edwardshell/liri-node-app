@@ -26,8 +26,6 @@ request(queryUrl, function(error, response, body) {
 
   // If the request is successful
   if (!error && response.statusCode === 200) {
-
-    // Parse the body of the site and recover just the imdbRating
     
    console.log("Release Year: " + JSON.parse(body).Year);
   }
