@@ -2,24 +2,14 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 var Twitter = require("twitter");
+var Spotify = require("node-spotify-api")
 
-// var spotify = new Spotify(keys.spotify);
-var bird = new Twitter(keys.twitter);
-
-var tKey = bird.consumer_key;
-var tSecret = bird.consumer_secret;
-var tokenKey = bird.access_token_key;
-var tokenSecret = bird.access_token_secret
 var cmd = process.argv[2];
 
 
 
-var client = new Twitter({
-    consumer_key: tKey,
-    consumer_secret: tSecret,
-    access_token_key: tokenKey,
-    access_token_secret: tokenSecret
-});
+var client = new Twitter(keys.twitter);
+
 
 var params = {screen_nam: 'eddyshell1'};
 client.get('statuses/user_timeline', params, function(error, tweets, response){
@@ -28,6 +18,18 @@ client.get('statuses/user_timeline', params, function(error, tweets, response){
     }
 
     else if (cmd === "my-tweets") {
-        console.log(tweets);
+        console.log(JSON.stringify(tweets, null, 2));
     }
-})
+});
+
+// var spotify = new Spotify(keys.spotify);
+
+
+// spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+//     if (err) {
+//       return console.log('Error occurred: ' + err);
+//     }
+   
+//   console.log(data); 
+//   });
+  
