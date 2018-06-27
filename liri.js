@@ -3,26 +3,20 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Twitter = require("twitter");
 
-// var spotifyID = new Spotify(keys.spotify.id);
+// var spotify = new Spotify(keys.spotify);
+var bird = new Twitter(keys.twitter);
 
-// var spotifySecret = new Spotify(keys.spotify.secret);
-
-var twitterKey = new Twitter(keys.twitter.consumer_key);
-
-
-var twitterSecret = new Twitter(keys.twitter.consumer_secret);
-
-var tokenKey = new Twitter(keys.twitter.access_token_key);
-
-var tokenSecret = new Twitter(keys.twitter.access_token_secret);
-
+var tKey = bird.consumer_key;
+var tSecret = bird.consumer_secret;
+var tokenKey = bird.access_token_key;
+var tokenSecret = bird.access_token_secret
 var cmd = process.argv[2];
 
 
 
 var client = new Twitter({
-    consumer_key: twitterKey,
-    consumer_secret: twitterSecret,
+    consumer_key: tKey,
+    consumer_secret: tSecret,
     access_token_key: tokenKey,
     access_token_secret: tokenSecret
 });
@@ -34,8 +28,6 @@ client.get('statuses/user_timeline', params, function(error, tweets, response){
     }
 
     else if (cmd === "my-tweets") {
-        console.log(twitterKey);
         console.log(tweets);
-        console.log(response);
     }
 })
