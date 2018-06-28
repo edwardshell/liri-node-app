@@ -45,3 +45,34 @@ spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, d
  
 console.log(data); 
 });
+
+
+#
+
+function getCommand(){
+    switch (cmd){
+        case "my-tweets":
+        // do stuff
+        for (i = 0; i < tweets.length; i++) {
+       console.log(JSON.stringify(tweets[i].text, null, 2));
+    }
+        break;
+        case "spotify-this-song":
+        // do stuff
+        break;
+    }
+}
+
+getCommand();
+
+
+
+
+* Title of the movie. body.title
+   * Year the movie came out. body.year
+   * IMDB Rating of the movie. body.imdbRating
+   * Rotten Tomatoes Rating of the movie. body.ratings[0].source
+   * Country where the movie was produced. body.country
+   * Language of the movie. body.language
+   * Plot of the movie. body.plot
+   * Actors in the movie. body.actors
